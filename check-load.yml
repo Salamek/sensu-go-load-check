@@ -1,0 +1,18 @@
+type: CheckConfig
+api_version: core/v2
+metadata:
+  name: sensu-go-load-check
+  namespace: default
+spec:
+  command: sensu-go-load-check
+  runtime_assets:
+  - sensu-go-load-check
+  interval: 60
+  publish: true
+  output_metric_format: nagios_perfdata
+  output_metric_handlers:
+  - infuxdb
+  handlers:
+  - slack
+  subscriptions:
+  - system
