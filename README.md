@@ -61,7 +61,7 @@ metadata:
   labels: {}
   annotations: {}
 spec:
-  url: https://github.com/asachs01/sensu-go-load-check/releases/download/0.0.1/sensu-go-load-check_0.0.1_linux_amd64.tar.gz
+  url: https://github.com/Salamek/sensu-go-load-check/releases/download/0.0.1/sensu-go-load-check_0.0.1_linux_amd64.tar.gz
   sha512:
   filters:
   - entity.system.os == 'linux'
