@@ -1,0 +1,12 @@
+GIT:
+    AUTO_COMMIT: true
+    AUTO_TAG: true
+    AUTO_PUSH: true # false=disabled, true=enabled, 'remote_name'=enabled and push to remote_name
+    COMMIT_MESSAGE: 'New version {version}'
+
+REGEXPS:
+    'VERSION': ^(?P<version>.*)$
+
+
+VERSION_FILES:
+    'VERSION': 'VERSION'
