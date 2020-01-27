@@ -3,21 +3,21 @@ package main
 //Import the packages we need
 import (
 	"fmt"
-	"os"
 	"io"
+	"os"
 	"strconv"
 	"strings"
 
 	"github.com/sensu/sensu-go/types"
-	"github.com/shirou/gopsutil/load"
 	"github.com/shirou/gopsutil/cpu"
+	"github.com/shirou/gopsutil/load"
 	"github.com/spf13/cobra"
 )
 
 //Set up some variables. Most notably, warning and critical as load 1/5/15 values
 var (
 	warning, critical string
-	stdin   *os.File
+	stdin             *os.File
 )
 
 //Start our main function
@@ -54,15 +54,15 @@ func configureRootCommand() *cobra.Command {
 
 func parseArg(arg string) []float64 {
 	var list []float64
-  for _, x := range strings.Split(arg, ",") {
-			w, err := strconv.ParseFloat(strings.TrimSpace(x), 64)
-			if err != nil {
-				msg := fmt.Sprintf("Failed to parse %s", err.Error())
-				io.WriteString(os.Stdout, msg)
-				os.Exit(3)
-			}
-      list = append(list, w)
-  }
+	for _, x := range strings.Split(arg, ",") {
+		w, err := strconv.ParseFloat(strings.TrimSpace(x), 64)
+		if err != nil {
+			msg := fmt.Sprintf("Failed to parse %s", err.Error())
+			io.WriteString(os.Stdout, msg)
+			os.Exit(3)
+		}
+		list = append(list, w)
+	}
 
 	return list
 }
@@ -110,8 +110,8 @@ func checkLoad(event *types.Event) error {
 
 	// Calculate load per core
 	for i, x := range cpuLoadList {
-      cpuLoadList[i] = x / float64(cpuCount)
-  }
+		cpuLoadList[i] = x / float64(cpuCount)
+	}
 
 	// Detect total level
 	// 0=ok, 1=warn, 2=crit
