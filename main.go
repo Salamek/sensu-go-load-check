@@ -115,7 +115,7 @@ func checkLoad(event *types.Event) error {
 
 	// Detect total level
 	// 0=ok, 1=warn, 2=crit
-	var level int8 = 0
+	var level int = 0
 	for i, v := range cpuLoadList {
 		if v > crit[i] {
 			if 2 > level {
@@ -139,7 +139,7 @@ func checkLoad(event *types.Event) error {
 		cpuLoadList[1],
 		cpuLoadList[2])
 	io.WriteString(os.Stdout, msg)
-	os.Exit(2)
+	os.Exit(level)
 
 	return nil
 }
